@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Calculator ⏳</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    min-height: 100vh;
+}
+h1 { margin-bottom: 20px; }
+input, button {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+input[type="date"] { width: 200px; }
+button { background-color: #38bdf8; color: #000; cursor: pointer; }
+button:hover { background-color: #0ea5e9; }
+.output {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fbbf24;
+}
+</style>
+</head>
+<body>
+
+<h1>Countdown to Your Date ⏳</h1>
+
+<div>
+    <label for="targetDate">Select a date:</label>
+    <input type="date" id="targetDate">
+    <button onclick="calculateCountdown()">Calculate</button>
+</div>
+
+<div class="output" id="result"></div>
+
+<script>
+function calculateCountdown() {
+    const input = document.getElementById('targetDate').value;
+    if (!input) {
+        alert('Please select a date!');
+        return;
+    }
+
+    const target = new Date(input);
+    const today = new Date();
+    target.setHours(0,0,0,0);
+    today.setHours(0,0,0,0);
+
+    let diffTime = target - today;
+    if(diffTime < 0){
+        document.getElementById('result').innerText = "The date has already passed!";
+        return;
+    }
+
+    const daysLeft = Math.floor(diffTime / (1000*60*60*24));
+    const weeksLeft = Math.floor(daysLeft / 7);
+    const monthsLeft = Math.floor(daysLeft / 30);
+
+    document.getElementById('result').innerHTML = `
+        Days Left: ${daysLeft} <br>
+        Weeks Left: ${weeksLeft} <br>
+        Approx. Months Left: ${monthsLeft}
+    `;
+}
+</script>
+
+</body>
+</html>
