@@ -3,40 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown Calculator ⏳</title>
+<title>Countdown ⏳</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
+    font-family: 'Roboto', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 40px;
     min-height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f43f5e, #fb923c,#5a67d8,#6d28d9,#4f46e5,#8b5cf6);
+    background-size: 400% 400%;
+    animation: gradientBG 6s ease infinite;
 }
-h1 { margin-bottom: 20px; }
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+h1 { 
+    margin-bottom: 30px; 
+    font-size: 4em;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
 input, button {
-    padding: 10px;
+    padding: 12px;
     margin: 8px;
     border-radius: 8px;
     border: none;
     font-size: 16px;
+    outline: none;
 }
-input[type="date"] { width: 200px; }
-button { background-color: #38bdf8; color: #000; cursor: pointer; }
-button:hover { background-color: #0ea5e9; }
-.output {
-    margin-top: 20px;
-    font-size: 22px;
+
+input[type="date"] {
+    width: 220px;
+}
+
+button {
+    background-color: #38bdf8;
+    color: #000;
+    cursor: pointer;
     font-weight: bold;
-    color: #fbbf24;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0ea5e9;
+    transform: scale(1.05);
+}
+
+.output {
+    margin-top: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-align: center;
+  
 }
 </style>
 </head>
 <body>
 
-<h1>Countdown to Your Date ⏳</h1>
+<h1>Countdown⏳</h1>
 
 <div>
     <label for="targetDate">Select a date:</label>
